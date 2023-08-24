@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/01-edu/z01"
@@ -14,21 +15,32 @@ func PrintStr(s string) {
 }
 
 func main() {
+	args := os.Args[1:]
 
-	arg := os.Args[1:]
-
-	if len(arg) != 1 {
+	if len(args) != 3 {
 		z01.PrintRune('\n')
 		return
 	}
 
-	input := arg[0]
+	input := os.Args[1]
+
+	letter1 := os.Args[2]
+
+	if len(letter1) != 1 {
+		fmt.Println("Error")
+	}
+
+	letter2 := os.Args[3]
+
+	if len(letter2) != 1 {
+		fmt.Println("Error")
+	}
 
 	res := ""
 
 	for _, ch := range input {
-		if ch >= 'a' && ch <= 'z' {
-			res += string('z' - ch + 'a')
+		if string(ch) == letter1 {
+			res += letter2
 		} else {
 			res += string(ch)
 		}

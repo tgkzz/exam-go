@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/01-edu/z01"
@@ -35,6 +34,40 @@ func Atoi(s string) int {
 	return res * sign
 }
 
+func Itoa(n int) string {
+	if n == 0 {
+		return "0"
+	}
+
+	isNegative := false
+
+	if n < 0 {
+		n = -n
+		isNegative = true
+	}
+
+	reversed := ""
+
+	for n > 0 {
+		digit := n % 10
+		reversed += string(digit + '0')
+		n /= 10
+	}
+
+	res := ""
+
+	for i := len(reversed) - 1; i >= 0; i-- {
+		res += string(reversed[i])
+	}
+
+	if isNegative {
+		res = "-" + res
+		return res
+	} else {
+		return res
+	}
+}
+
 func PrintStr(s string) {
 	for _, ch := range s {
 		z01.PrintRune(ch)
@@ -51,13 +84,18 @@ func main() {
 
 	num := Atoi(arg)
 
-	//task: do it using printStr function
 	for i := 1; i <= 9; i++ {
-		fmt.Print(i)
-		fmt.Print(" x ")
-		fmt.Print(num)
-		fmt.Print(" = ")
-		fmt.Println(i * num)
+
+		res := ""
+
+		res += Itoa(i)
+		res += " x "
+		res += arg
+		res += " = "
+		res += Itoa(i * num)
+
+		PrintStr(res)
+
 	}
 
 }

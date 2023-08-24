@@ -1,19 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/01-edu/z01"
+)
 
 func Chunk(slice []int, size int) {
 	if size == 0 {
-		fmt.Println()
+		z01.PrintRune('\n')
 		return
 	}
 
-	res := make([][]int, 0)
+	res := [][]int{}
 
 	for i := 0; i < len(slice); i += size {
 		end := i + size
 		if end > len(slice) {
-			end = len(slice) - 1
+			end = len(slice)
 		}
 		res = append(res, slice[i:end])
 	}
