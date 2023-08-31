@@ -1,6 +1,10 @@
 package main
 
-import "os"
+import (
+	"os"
+
+	"github.com/01-edu/z01"
+)
 
 func ToLower(s string) string {
 	res := ""
@@ -16,48 +20,34 @@ func ToLower(s string) string {
 	return res
 }
 
-func SplitWhiteSpace(s string) []string {
-	res := []string{}
-	wordCollector := ""
-
-	for i := 0; i < len(s); i++ {
-		if s[i] != ' ' && s[i] != '\n' && s[i] != '\t' {
-			wordCollector += string(s[i])
-		} else if wordCollector != "" {
-			res = append(res, wordCollector)
-			wordCollector = ""
-		}
-	}
-
-	if wordCollector != "" {
-		res = append(res, wordCollector)
-	}
-
-	return res
-}
-
-func ToCapLast(s string) string {
-	splitted := SplitWhiteSpace(s)
-	tmpres := []string{}
+func ToCap(s string) string {
 	res := ""
 
-	for _, word := range splitted {
-		tmpres = 
+	for _, ch := range s {
+		if 
 	}
 
 }
 
-func reversestr(s string) string {
-	s = ToLower(s)
-	s = ToCapLast(s)
+func PrintStr(s string) {
+	for _, ch := range s {
+		z01.PrintRune(ch)
+	}
+	z01.PrintRune('\n')
 }
 
 func main() {
-	res := []string{}
+	if len(os.Args[1:]) != 0 {
+		return
+	}
 
 	args := os.Args[1:]
 
 	for i, arg := range args {
-		res[i] = reversestr(arg)
+		args[i] = ToLower(arg)
+	}
+
+	for i, arg := range args {
+		args[i] = ToCap(arg)
 	}
 }
