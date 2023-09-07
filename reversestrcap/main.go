@@ -23,10 +23,32 @@ func ToLower(s string) string {
 func ToCap(s string) string {
 	res := ""
 
+	splitted := Split(s)
+
+	for i := 0; i < len(splitted); i++ {
+
+	}
+}
+
+func Split(s string) []string {
+	res := []string{}
+
+	wordCollector := ""
+
 	for _, ch := range s {
-		if 
+		if ch == ' ' {
+			res = append(res, wordCollector)
+			wordCollector = ""
+		} else {
+			wordCollector += string(ch)
+		}
 	}
 
+	if wordCollector != "" {
+		res = append(res, wordCollector)
+	}
+
+	return res
 }
 
 func PrintStr(s string) {
